@@ -22,7 +22,7 @@ Some notes I've taken based on the spec:
 - I've used docker/php8-cli and a little [Makefile](/Makefile) to wrap it together. run `make tests` to install composer libraries
 - I went with the Decorator Pattern to enrich the `Item`'s, leaving the original class untouched.
 - Used Factory pattern to generate the `Items`
-- If I had more time I would probably flesh out the tests further. All in all I spent 3+hrs on this
+- If I had more time I would like to add more Domain specific behaviour and flesh out the tests further. All in all I spent 3+hrs on this
 
 ### Instructions
 - **With docker**  

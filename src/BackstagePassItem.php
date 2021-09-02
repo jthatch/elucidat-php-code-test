@@ -6,7 +6,7 @@ namespace App;
 
 use App\Interfaces\ItemInterface;
 
-class BackstagePassItem extends ItemBehaviour implements ItemInterface
+final class BackstagePassItem extends ItemBehaviour implements ItemInterface
 {
     protected const MIN_QUALITY          = 0;
     protected const MAX_QUALITY          = 50;
