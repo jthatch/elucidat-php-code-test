@@ -1,11 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App;
 
 use App\Interfaces\InnInterface;
 
 /**
- * Could be other types of Inn, however all SmallInns only take `Items[]` in their constructor
+ * Could be other types of Inn, however all SmallInns only take `Items[]` in their constructor.
  */
 abstract class SmallInn implements InnInterface
 {

@@ -1,7 +1,6 @@
 {
     "require-dev": {
-        "kahlan/kahlan": "^5",
-        "friendsofphp/php-cs-fixer": "~2.8"
+        "kahlan/kahlan": "^5"
     },
     "autoload": {
         "psr-4": {

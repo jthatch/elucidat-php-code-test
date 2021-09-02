@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App;
@@ -23,12 +24,13 @@ abstract class ItemBehaviour
     }
 
     /**
-     * Can be overridden
+     * Can be overridden.
+     *
      * @return int
      */
     protected function getQualityChange(): int
     {
-        return $this->item->sellIn >0
+        return $this->item->sellIn > 0
             ? $this->preQualityDegradeMultiplier
             : $this->postQualityDegradeMultiplier;
     }
@@ -43,7 +45,7 @@ abstract class ItemBehaviour
         $this->item->quality  = min($this->item->quality, $this->maxQuality);
 
         // decrease our sellIn date by N
-        $this->item->sellIn  -= $this->sellInCounter;
+        $this->item->sellIn -= $this->sellInCounter;
 
         return $this->item->quality;
     }

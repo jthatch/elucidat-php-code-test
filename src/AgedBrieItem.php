@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App;
 
 use App\Interfaces\ItemInterface;
@@ -11,5 +13,4 @@ class AgedBrieItem extends ItemBehaviour implements ItemInterface
     protected const PRE_QUALITY_DEGRADE  = -1;
     protected const POST_QUALITY_DEGRADE = -2;
     protected const SELL_IN_COUNTER      = 1;
-
 }

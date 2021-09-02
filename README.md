@@ -21,6 +21,9 @@
  - The testing framework version `"crysalead/kahlan": "^1.2"` was released in 2016 and is abandoned, in favour of `kahlan/kahlan` so I wasn't holding my breath for compatibility, but it seemed to work, so I forged on ahead.  
    UPDATE: Explicitly adding return types to my `InnInterface` and `GildedRose` threw the `Fatal error: A void function must not return a value in /tmp/kahlan/usr/src/elucidat/src/GildedRose.php on line 37` so i've upgraded the package.   
  - I've used docker/php8-cli and a little [Makefile](/Makefile) to wrap it together. run `make tests` to install composer libraries
+ - I went with the Decorator Pattern to enrich the `Item`'s, leaving the original class untouched.
+ - Used Factory pattern to generate the `Items`
+ - If I had more time I would probably flesh out the tests further. All in all I spent 3+hrs on this
 
 ### Instructions
 - **With docker**  
