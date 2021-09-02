@@ -2,27 +2,51 @@
 
 namespace App;
 
-class GildedRose
-{
-    private $items;
+use App\Exceptions\ItemNotFoundException;
+use App\Interfaces\ItemInterface;
 
+class GildedRose extends SmallInn
+{
+    /**
+     * @var Item[] $items
+     */
+    private array $items;
+
+    /**
+     * @param Item[] $items
+     */
     public function __construct(array $items)
     {
-        $this->items = $items;
+        $this->assertArrayOfItems($items);
+        $this->items = ItemFactory::createBulk($items);
     }
 
-    public function getItem($which = null)
+    /**
+     * Returns an Item instance if key is specified otherwise returns the Item[] set
+     *
+     * @param int|null $which
+     * @return array|Item
+     * @throws ItemNotFoundException
+     */
+    public function getItem(int $which = null): array|Item|ItemInterface
     {
         return ($which === null
             ? $this->items
-            : $this->items[$which]
+            : $this->items[$which] ?? throw new ItemNotFoundException('Item not found')
         );
     }
 
-    public function nextDay()
+    public function nextDay(): void
+    {
+        array_walk($this->items, function(ItemInterface $item) {
+            $item->nextDay();
+        });
+    }
+
+    public function nextDayOld(): void
     {
         foreach ($this->items as $item) {
-            if ($item->name != 'Aged Brie' and $item->name != 'Backstage passes to a TAFKAL80ETC concert') {
+            if ($item->name != 'Aged Brie' && $item->name != 'Backstage passes to a TAFKAL80ETC concert') {
                 if ($item->quality > 0) {
                     if ($item->name != 'Sulfuras, Hand of Ragnaros') {
                         $item->quality = $item->quality - 1;

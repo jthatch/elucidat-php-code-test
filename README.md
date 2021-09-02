@@ -1,5 +1,38 @@
 # The Elucidat Coding Test
 
+---
+## James Thatcher - my notes
+
+ Some notes I've taken based on the spec: 
+ 
+ ### Explicit rules
+ - You can alter the [src/GildedRose](src/GildedRose.php) class
+   - You can make **any** changes to the [nextDay()](src/GildedRose.php#L22) method including changing it to static
+   - You cannot change the [private $items](src/GildedRose.php) unless to change it to static
+ - **You cannot alter the [Item](src/Item.php) class in any way**
+ - Add the new category Conjured items and uncomment the tests
+
+### My assumptions
+ - You mention making the `nextDay` and `$items` static, what about changing the class to become a factory?
+ - The kanlan tests represent the legacy system. The way both the `GildedRose` and `Item` classes are  and sweeping changes to core functionality would be impractical. 
+
+### Notes
+ - I decided to write my code in PHP8 as I enjoy it and as this is a test I thought I could get away with it. In the real-world there would be other factors at play. 
+ - The testing framework version `"crysalead/kahlan": "^1.2"` was released in 2016 and is abandoned, in favour of `kahlan/kahlan` so I wasn't holding my breath for compatibility, but it seemed to work, so I forged on ahead.  
+   UPDATE: Explicitly adding return types to my `InnInterface` and `GildedRose` threw the `Fatal error: A void function must not return a value in /tmp/kahlan/usr/src/elucidat/src/GildedRose.php on line 37` so i've upgraded the package.   
+ - I've used docker/php8-cli and a little [Makefile](/Makefile) to wrap it together. run `make tests` to install composer libraries
+
+### Instructions
+- **With docker**  
+  `make tests`
+- **Without docker; requires php8 locally (tested on 8.0.10)**
+  ```shell
+  composer update
+  ./vendor/bin/kahlan
+  ```
+
+
+---
 ## The task
 
 This repository includes the initial setup for a popular kata.  It includes everything you need to get up and running, including a large suite of tests.  The purpose of this task is to put you in the position of having some old, ugly, legacy code and seeing whay you could do with it, all of the while making any of your changes test-driven and ensuring everything continues to pass the tests (or any more tests you would write). 
